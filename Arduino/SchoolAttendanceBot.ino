@@ -4,10 +4,10 @@
 #include "soc/rtc_cntl_reg.h"
 #include "esp_camera.h"
 
-const char* ssid = "Alireza iPhone";
-const char* password = "qazwsxedc735";
+const char* ssid = "YOUR_SSID";
+const char* password = "YOUR_PASSWORD";
 
-String serverName = "172.20.10.3";   // REPLACE WITH YOUR Raspberry Pi IP ADDRESS
+String serverName = "YOUR_IP_ADDRESS";   // REPLACE WITH YOUR Raspberry Pi IP ADDRESS
 //String serverName = "example.com";   // OR REPLACE WITH YOUR DOMAIN NAME
 
 String serverPath = "/upload.php";     // The default serverPath should be upload.php
@@ -124,8 +124,8 @@ String sendPhoto() {
 
   if (client.connect(serverName.c_str(), serverPort)) {
     Serial.println("Connection successful!");    
-    String head = "--AbsencePresenceBot\r\nContent-Disposition: form-data; name=\"imageFile\"; filename=\"esp32-cam.jpg\"\r\nContent-Type: image/jpeg\r\n\r\n";
-    String tail = "\r\n--AbsencePresenceBot--\r\n";
+    String head = "--SchoolAttendanceBot\r\nContent-Disposition: form-data; name=\"imageFile\"; filename=\"esp32-cam.jpg\"\r\nContent-Type: image/jpeg\r\n\r\n";
+    String tail = "\r\n--SchoolAttendanceBot--\r\n";
 
     uint16_t imageLen = fb->len;
     uint16_t extraLen = head.length() + tail.length();
@@ -134,7 +134,7 @@ String sendPhoto() {
     client.println("POST " + serverPath + " HTTP/1.1");
     client.println("Host: " + serverName);
     client.println("Content-Length: " + String(totalLen));
-    client.println("Content-Type: multipart/form-data; boundary=AbsencePresenceBot");
+    client.println("Content-Type: multipart/form-data; boundary=SchoolAttendanceBot");
     client.println();
     client.print(head);
   
