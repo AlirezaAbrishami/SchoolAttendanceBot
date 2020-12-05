@@ -3,6 +3,6 @@
 while true
 do
     sleep 3
-    python3.8 presence_bot.py --image /opt/lampp/htdocs/upload/esp32-cam.jpg
+    python3.8 attendance_bot.py --image /opt/lampp/htdocs/upload/esp32-cam.jpg
 done
 
