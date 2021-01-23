@@ -2,6 +2,7 @@ from pytesseract import Output
 import pytesseract
 import argparse
 import cv2
+import os
 # construct the argument parser and parse the arguments
 ap = argparse.ArgumentParser()
 ap.add_argument("-i", "--image", required=True,
@@ -31,4 +32,6 @@ for i in range(0, len(results["text"])):
 		print("Confidence: {}".format(conf))
 		print("Text: {}".format(text))
 		print("")
-
+		if format(text) == "+" or format(text) == "++":
+			print("Alert")
+			os.system("mplayer ~/Downloads/mixkit-sci-fi-error-alert-898.wav") #replace with the address of the sound you want to play
